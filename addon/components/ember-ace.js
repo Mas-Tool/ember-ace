@@ -1,4 +1,4 @@
-import { run } from '@ember/runloop';
+import { run,scheduleOnce } from '@ember/runloop';
 import { warn } from '@ember/debug';
 import { computed } from '@ember/object';
 import { tryInvoke } from '@ember/utils';
@@ -123,7 +123,7 @@ export default Component.extend({
   _syncAceProperties() {
     if (!this.editor) return;
 
-    const oldValues = this.getWithDefault('_previousAceValues', {});
+    const oldValues = this._previousAceValues || {};
     const newValues = this.getProperties(ACE_PROPERTIES);
 
     this.set('_previousAceValues', newValues);
