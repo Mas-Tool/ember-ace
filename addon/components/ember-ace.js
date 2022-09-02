@@ -1,4 +1,4 @@
-import { run,scheduleOnce } from '@ember/runloop';
+import { run,scheduleOnce,schedule } from '@ember/runloop';
 import { warn } from '@ember/debug';
 import { computed } from '@ember/object';
 import { tryInvoke } from '@ember/utils';
@@ -233,7 +233,7 @@ const ACE_HANDLERS = Object.freeze({
   },
 
   annotations(editor, newValue) {
-    run.schedule('render', this, () => editor.session.setAnnotations(newValue));
+    schedule('render', this, () => editor.session.setAnnotations(newValue));
   },
 
   useWrapMode(editor, newValue) {
