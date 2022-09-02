@@ -138,7 +138,7 @@ export default Component.extend({
     });
 
     // Render within this run loop, for consistency with Ember's normal component rendering flow
-    run.scheduleOnce('render', this, () => this.editor.renderer.updateFull(true));
+    scheduleOnce('render', this, () => this.editor.renderer.updateFull(true));
   },
 
   _syncAceProperty(key, value) {
